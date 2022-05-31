@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const showSchema = new Schema({
+const directorSchema = new Schema({
   name: String,
-  genre: String,
-  directorId: String,
+  age: Number,
 });
 
-module.exports.mongoose.model("Show", showSchema);
+module.exports.mongoose.model("Director", directorSchema);

@@ -1,5 +1,7 @@
 const graphql = require("graphql");
 const _ = require("lodash");
+const Show = require("../models/show");
+const Director = require("../models/director");
 
 const {
   GraphQLObjectType,
@@ -18,10 +20,8 @@ const ShowType = new GraphQLObjectType({
     genre: { type: GraphQLString },
     director: {
       type: DirectorType,
-      resolve(parent, args){
-        return Director
-      }
-    }
+      resolve(parent, args) {},
+    },
   }),
 });
 
@@ -42,7 +42,6 @@ const RootQuery = new GraphQLObjectType({
       args: { id: { type: GraphQLString } },
       resolve(parent, args) {
         // Gets data from database
-        return _.find(directorId, { id: args.id });
       },
     },
   }),
