@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 const app = express();
 
+//Mongo DB Connection
 CONNECTION_URL =
   "mongodb+srv://walker3365:19606@cluster0.qvliczh.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(CONNECTION_URL);

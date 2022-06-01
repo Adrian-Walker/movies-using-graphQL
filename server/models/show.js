@@ -7,4 +7,4 @@ const showSchema = new Schema({
   directorId: String,
 });
 
-module.exports.mongoose.model("Show", showSchema);
+module.exports = mongoose.model("Show", showSchema);

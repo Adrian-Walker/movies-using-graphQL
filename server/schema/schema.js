@@ -47,6 +47,24 @@ const RootQuery = new GraphQLObjectType({
   }),
 });
 
+const mutation = new GraphQLObjectType({
+  name: "Mutation",
+  fields: {
+    addDirector: {
+      type: DirectorType,
+      args: {
+        name: GraphQLString,
+        age: GraphQLInt
+      },
+      resolve(parent, args){
+        let director = new Director({
+          name: args.name
+        })
+      }
+    }
+  }
+});
+
 module.exports = new GraphQLSchema({
   query: RootQuery,
 });
