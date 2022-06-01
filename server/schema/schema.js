@@ -20,7 +20,10 @@ const ShowType = new GraphQLObjectType({
     genre: { type: GraphQLString },
     director: {
       type: DirectorType,
-      resolve(parent, args) {},
+      resolve(parent, args) {
+        console.log(parent);
+        
+      },
     },
   }),
 });
@@ -28,9 +31,9 @@ const ShowType = new GraphQLObjectType({
 const DirectorType = new GraphQLObjectType({
   name: "Director",
   fields: () => ({
-    id: { type: GraphQLString },
+    id: { type: GraphQLID },
     name: { type: GraphQLString },
-    genre: { type: GraphQLString },
+    age: { type: GraphQLInt },
   }),
 });
 
@@ -47,24 +50,43 @@ const RootQuery = new GraphQLObjectType({
   }),
 });
 
-const mutation = new GraphQLObjectType({
+const Mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
     addDirector: {
       type: DirectorType,
       args: {
-        name: GraphQLString,
-        age: GraphQLInt
+        name: { type: GraphQLString },
+        age: { type: GraphQLInt },
       },
-      resolve(parent, args){
+      resolve(parent, args) {
         let director = new Director({
-          name: args.name
-        })
-      }
-    }
-  }
+          name: args.name,
+          age: args.age,
+        });
+        return director.save();
+      },
+    },
+    addShow: {
+      type: ShowType,
+      args: {
+        name: { type: GraphQLString },
+        genre: { type: GraphQLString },
+        directorId: { type: GraphQLID },
+      },
+      resolve(parent, args) {
+        let show = new Show({
+          name: args.name,
+          genre: args.genre,
+          directorId: args.directorId,
+        });
+        return show.save();
+      },
+    },
+  },
 });
 
 module.exports = new GraphQLSchema({
   query: RootQuery,
+  mutation: Mutation,
 });
