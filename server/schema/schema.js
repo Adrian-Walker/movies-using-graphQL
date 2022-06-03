@@ -22,7 +22,7 @@ const ShowType = new GraphQLObjectType({
       type: DirectorType,
       resolve(parent, args) {
         console.log(parent);
-        
+        return Director.findById(parent, directorId);
       },
     },
   }),
@@ -34,6 +34,12 @@ const DirectorType = new GraphQLObjectType({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
     age: { type: GraphQLInt },
+    shows: {
+      type: new GraphQLList(ShowType),
+      resolve(parent, args) {
+        return Show.find({ directorId: parent.id });
+      },
+    },
   }),
 });
 
@@ -45,6 +51,26 @@ const RootQuery = new GraphQLObjectType({
       args: { id: { type: GraphQLString } },
       resolve(parent, args) {
         // Gets data from database
+        return Show.findById(args.id);
+      },
+    },
+    director: {
+      type: DirectorType,
+      args: { id: { type: GraphQLID } },
+      resolve(parent, args) {
+        return Director.findById(args.id);
+      },
+    },
+    shows: {
+      type: new GraphQLList(ShowType),
+      resolve(parent, args) {
+        return Show.find({});
+      },
+    },
+    directors: {
+      type: new GraphQLList(DirectorType),
+      resolve(parents, args) {
+        return Director.find({});
       },
     },
   }),
