@@ -10,6 +10,7 @@ const {
   GraphQLID,
   GraphQLInt,
   GraphQLList,
+  GraphQLNonNull
 } = graphql;
 
 const ShowType = new GraphQLObjectType({
@@ -82,7 +83,7 @@ const Mutation = new GraphQLObjectType({
     addDirector: {
       type: DirectorType,
       args: {
-        name: { type: GraphQLString },
+        name: { type: new GraphQLNonNull(GraphQLString)  },
         age: { type: GraphQLInt },
       },
       resolve(parent, args) {
@@ -96,8 +97,8 @@ const Mutation = new GraphQLObjectType({
     addShow: {
       type: ShowType,
       args: {
-        name: { type: GraphQLString },
-        genre: { type: GraphQLString },
+        name: { type: new GraphQLNonNull(GraphQLString)},
+        genre: { type: new GraphQLNonNull(GraphQLString)},
         directorId: { type: GraphQLID },
       },
       resolve(parent, args) {
