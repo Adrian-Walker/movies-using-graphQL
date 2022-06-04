@@ -1,8 +1,10 @@
 body {
 background: #eee;
-font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
+ul{
+list-style-type:circle;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
