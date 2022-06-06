@@ -23,7 +23,7 @@ const ShowType = new GraphQLObjectType({
       type: DirectorType,
       resolve(parent, args) {
         console.log(parent);
-        return Director.findById(parent, directorId);
+        return Director.findById(parent.directorId);
       },
     },
   }),
