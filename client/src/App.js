@@ -1,5 +1,6 @@
-import ShowList from "./components/ShowList";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import ShowList from "./components/ShowList";
+import AddShow from "./components/AddShow";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
@@ -11,7 +12,8 @@ function App() {
     <ApolloProvider client={client}>
       <div className="App">
         <ShowList />
-       Hello
+        <AddShow />
+        Hello
       </div>
     </ApolloProvider>
   );

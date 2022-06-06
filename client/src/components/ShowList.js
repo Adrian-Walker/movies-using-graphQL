@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { map } from "lodash";
+
 
 const GET_SHOW_QUERY = gql`
   {
@@ -19,10 +19,11 @@ const GET_SHOW_QUERY = gql`
 function ShowList() {
   const { loading, data, error } = useQuery(GET_SHOW_QUERY);
   if (loading) return <p>Loading...</p>;
+  // console.log(data, "line 22")
 
   const renderShows = () => {
     return data.shows.map((show) => {
-      return <li key={show.director.id}>{show.name}</li>;
+      return <li key={show.id}>{show.name}</li>;
     });
   };
 
