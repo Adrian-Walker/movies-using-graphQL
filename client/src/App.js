@@ -1,5 +1,5 @@
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import ShowList from "./components/ShowList";
+import ShowList from "./components/ShowList"
 import AddShow from "./components/AddShow";
 
 const client = new ApolloClient({
@@ -13,8 +13,7 @@ function App() {
       <div className="App">
         <ShowList />
         <AddShow />
-        New
-        Hello
+        New Hello
       </div>
     </ApolloProvider>
   );
