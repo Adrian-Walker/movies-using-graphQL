@@ -1,13 +1,5 @@
-import { gql, useQuery } from "@apollo/client";
-
-const GET_DIRECTOR_QUERY = gql`
-  {
-    directors {
-      name
-      id
-    }
-  }
-`;
+import { useQuery } from "@apollo/client";
+import {GET_DIRECTOR_QUERY} from "../queries/queries"
 
 function AddShow() {
   const { loading, data, error } = useQuery(GET_DIRECTOR_QUERY);

@@ -1,20 +1,5 @@
-import { gql, useQuery } from "@apollo/client";
-
-
-const GET_SHOW_QUERY = gql`
-  {
-    shows {
-      name
-      id
-      genre
-      director {
-        id
-        name
-        age
-      }
-    }
-  }
-`;
+import { useQuery } from "@apollo/client";
+import {GET_SHOW_QUERY} from "../queries/queries";
 
 function ShowList() {
   const { loading, data, error } = useQuery(GET_SHOW_QUERY);
