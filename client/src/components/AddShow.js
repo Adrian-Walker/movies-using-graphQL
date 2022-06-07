@@ -21,21 +21,47 @@ function AddShow() {
     });
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(show, genre, directorId);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="show-name">Show Name: </label>
-        <input id="show-name" name="show-name" type="text" />
+        <input
+          id="show-name"
+          name="show-name"
+          type="text"
+          onChange={(e) => {
+            setShow(e.target.value);
+          }}
+        />
+        {console.log(setShow)}
       </div>
 
       <div>
         <label htmlFor="genre">Genre: </label>
-        <input id="genre" name="genre" type="text" />
+        <input
+          id="genre"
+          name="genre"
+          type="text"
+          onChange={(e) => {
+            setGenre(e.target.value);
+          }}
+        />
       </div>
 
       <div>
         <label htmlFor="director">Director: </label>
-        <select id="director" name="director">
+        <select
+          id="director"
+          name="director"
+          onChange={(e) => {
+            setDirectorId(e.target.value);
+          }}
+        >
           <option>Choose Director:</option>
           {renderDirectors()}
         </select>
