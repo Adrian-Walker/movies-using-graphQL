@@ -13,7 +13,6 @@ function App() {
       <div className="App">
         <ShowList />
         <AddShow />
-        Hello
       </div>
     </ApolloProvider>
   );
