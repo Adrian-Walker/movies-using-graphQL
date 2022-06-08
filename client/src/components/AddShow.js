@@ -3,10 +3,10 @@ import { useState } from "react";
 import { GET_DIRECTOR_QUERY } from "../queries/queries";
 
 function AddShow() {
+  const [show, setShow] = useState("");
+  const [genre, setGenre] = useState("");
+  const [directorId, setDirectorId] = useState("");
   const { loading, data, error } = useQuery(GET_DIRECTOR_QUERY);
-  const { show, setShow } = useState("");
-  const { genre, setGenre } = useState("");
-  const { directorId, setDirectorId } = useState("");
 
   if (loading) return <p>Loading...</p>;
   // console.log(data, "line 16 add show")
@@ -21,8 +21,8 @@ function AddShow() {
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     console.log(show, genre, directorId);
   };
 
@@ -34,11 +34,8 @@ function AddShow() {
           id="show-name"
           name="show-name"
           type="text"
-          onChange={(e) => {
-            setShow(e.target.value);
-          }}
+          onChange={(e) => setShow(e.target.value)}
         />
-        {console.log(setShow)}
       </div>
 
       <div>
@@ -47,9 +44,7 @@ function AddShow() {
           id="genre"
           name="genre"
           type="text"
-          onChange={(e) => {
-            setGenre(e.target.value);
-          }}
+          onChange={(e) => setGenre(e.target.value)}
         />
       </div>
 
@@ -58,9 +53,7 @@ function AddShow() {
         <select
           id="director"
           name="director"
-          onChange={(e) => {
-            setDirectorId(e.target.value);
-          }}
+          onChange={(e) => setDirectorId(e.target.value)}
         >
           <option>Choose Director:</option>
           {renderDirectors()}
