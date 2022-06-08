@@ -24,7 +24,7 @@ const GET_DIRECTOR_QUERY = gql`
   }
 `;
 
-const ADD_MOVIE_QUERY = gql`
+const ADD_SHOW_MUTATION = gql`
   {
     mutation {
       addShow(name: "", genre: "", directorId: "") {
@@ -35,4 +35,4 @@ const ADD_MOVIE_QUERY = gql`
   }
 `;
 
-export { GET_SHOW_QUERY, GET_DIRECTOR_QUERY, ADD_MOVIE_QUERY };
+export { GET_SHOW_QUERY, GET_DIRECTOR_QUERY, ADD_SHOW_MUTATION };
