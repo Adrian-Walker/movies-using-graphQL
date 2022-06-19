@@ -24,7 +24,13 @@ function AddShow() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addShow();
+    addShow({
+      variables: {
+        show,
+        genre,
+        directorId
+      },
+    });
     console.log(show, genre, directorId);
   };
 

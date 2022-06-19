@@ -26,7 +26,7 @@ const GET_DIRECTOR_QUERY = gql`
 
 const ADD_SHOW_MUTATION = gql`
   mutation($name: String!, $genre: String!, $directorId: String!) {
-    addShow(name: "", genre: "", directorId: "") {
+    addShow(name: $name, genre: $genre, directorId: $directorId) {
       name
       id
     }
