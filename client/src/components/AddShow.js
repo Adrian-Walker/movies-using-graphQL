@@ -1,11 +1,12 @@
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { useState } from "react";
-import { GET_DIRECTOR_QUERY } from "../queries/queries";
+import { GET_DIRECTOR_QUERY, ADD_SHOW_MUTATION } from "../queries/queries";
 
 function AddShow() {
   const [show, setShow] = useState("");
   const [genre, setGenre] = useState("");
   const [directorId, setDirectorId] = useState("");
+  const [addShow] = useMutation(ADD_SHOW_MUTATION);
   const { loading, data, error } = useQuery(GET_DIRECTOR_QUERY);
 
   if (loading) return <p>Loading...</p>;
@@ -23,6 +24,13 @@ function AddShow() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    addShow({
+      variables: {
+        show,
+        genre,
+        directorId
+      },
+    });
     console.log(show, genre, directorId);
   };
 
