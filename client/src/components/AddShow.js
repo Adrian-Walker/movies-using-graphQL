@@ -31,7 +31,7 @@ function AddShow() {
         directorId
       },
     });
-    console.log(show, genre, directorId);
+    console.log(addShow());
   };
 
   return (
