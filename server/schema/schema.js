@@ -101,7 +101,7 @@ const Mutation = new GraphQLObjectType({
       args: {
         name: { type: new GraphQLNonNull(GraphQLString) },
         genre: { type: new GraphQLNonNull(GraphQLString) },
-        directorId: { type: GraphQLID },
+        directorId: { type: new GraphQLNonNull(GraphQLID) },
       },
       resolve(parent, args) {
         let show = new Show({
